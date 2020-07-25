@@ -1,16 +1,64 @@
+@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
 *{margin:0; padding:0; box-sizing: border-box;}
-
-#time-js h1{
-    text-align: center;
-    color: violet;
-}
-
-#name-js input{
+input{
     display:block;
     margin:0 auto;
     outline: none;
+    border: none;
+    padding: 20px 10px 20px 10px;
+    margin-top: 20px;
+    width:400px;
+}
+body{
+    font-family: 'press start 2p';
+    background: rgb(30, 30, 40);
+    color: white;
+}
+
+header h1{
+    color: white;
+    text-align: center;
+    margin-top: 60px; 
+    text-shadow: 0 .1em 0 #000;
+    @include background-image(linear-gradient($b 0%, $b 50%, transparent 50%, transparent 100%));
+    background-repeat: repeat;
+    background-size: 20px 10px;
+}
+
+#time-js h1{
+    text-align: center;
+    font-size: 40px;
+    color: white;
+    margin-top: 40px;
+    text-shadow: 0 .1em 0 #000;
+    @include background-image(linear-gradient($b 0%, $b 50%, transparent 50%, transparent 100%));
+    background-repeat: repeat;
+    background-size: 20px 10px;
 }
 
 .name_h3{
     text-align: center;
+}
+#name-js {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+
+.contents{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    
+}
+.contents div{
+    width:300px;
+    height:300px;
+    border: 1px solid white;
+}
+.contents .left_sec{
+    margin-right: 20px;
+}
+.contents .right_sec{
+    margin-left: 20px;
 }
