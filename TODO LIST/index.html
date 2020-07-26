@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Todo List</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <header>
-        <h1>TIME</h1>
+    <div id="loading-js"></div>
+    <header id="weather-js">
+        <h1></h1>
     </header>
     <div id="time-js">
         <h1>Hello</h1>
@@ -19,14 +20,16 @@
     <form id="todo-js">
         <input id="todo-input"type="text" placeholder="Today to-do">
     </form>
-    <ul id = "ul-js">
-    </ul>
-    <div class="contents">
-        <div class="left_sec"></div>
-        <div class="right_sec"></div>
+    <div id="todoContainer"class="contents">
+        <ul id="ul-left"class="ul-left"></ul>
+        <ul id="ul-right"class="ul-right"></ul>
     </div>
     <script src="assets/time.js"></script>
     <script src="assets/name.js"></script>
     <script src="assets/todo.js"></script>
+    <script src="assets/weather.js"></script>
+    <script src="assets/load.js"></script>
+
+    
 </body>
 </html>

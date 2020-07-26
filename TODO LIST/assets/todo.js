@@ -1,6 +1,8 @@
 const todoForm = document.getElementById("todo-js");
 const todoInput = document.getElementById("todo-input");
-const todoUl = document.getElementById(`ul-js`);
+const todoLeft = document.getElementById(`ul-left`);
+const todoRight = document.getElementById(`ul-right`);
+const todoContainer = document.getElementById(`todoContainer`)
 
 const TODO_LIST = `To-do`;
 
@@ -16,7 +18,7 @@ function askTodo(text){
     const todoLi = document.createElement(`li`);
     const span = document.createElement(`span`);
     const newId = todoAry.length + 1;
-    todoUl.prepend(todoLi);
+    todoLeft.prepend(todoLi);
     todoLi.prepend(span);
     span.innerText = text;
     todoLi.id = newId;
@@ -27,13 +29,32 @@ function askTodo(text){
     clearBtn.innerText = `O`;
     todoLi.append(clearBtn);
     delBtn.addEventListener("click",handleDelete);
+    clearBtn.addEventListener("click",handleClear)
     const todoObj = {
-        user :text ,
-        id : newId
+        todo :text ,
+        id : newId 
     };
     todoAry.push(todoObj);
     saveTodo()
 }
+// todo 값이 done 값으로 그 후 asktodo done 값이 존재하면 right section done 값출력
+// if(todoAry.done){done 값이 right section 출력!}
+function handleClear(){
+    const li = event.target.parentNode;
+    const ul = li.parentNode;
+    let nextUl = ul.nextElementSibling;
+    if(nextUl === null){
+        let nextUl = ul.previousElementSibling;
+        nextUl.prepend(li);
+    }else{
+        nextUl.prepend(li);
+        //todoAry.todo 삭제 and t
+    }
+    console.log(event)
+    //누른거 하나만 todoObj.todo 값이 삭제 todoObj.done 값으로 되기를 원함
+    saveTodo();
+}
+
 
 
 function submitTodo(e){
@@ -43,10 +64,10 @@ function submitTodo(e){
     todoInput.value = "";
 }
 
-function handleDelete(){
-    const btn = event.target;
-    const li = btn.parentNode;
-    todoUl.removeChild(li);
+function handleDelete(e){
+    const li = event.target.parentNode;
+    const ul = li.parentNode;
+    ul.removeChild(li);
     const cleanTodo = todoAry.filter((todo)=>{
         return todo.id !== parseInt(li.id);
     })
@@ -59,8 +80,8 @@ function loadTodo(){
     const getTodo = localStorage.getItem(TODO_LIST)
     if(getTodo !== null){
         const parseToDos =  JSON.parse(getTodo);
-        parseToDos.forEach((toDo) => {
-            askTodo(toDo.user);
+        parseToDos.forEach((toDo) => {//error done 하나라도 존재시 
+            askTodo(toDo.todo);
         })
     }
 }
